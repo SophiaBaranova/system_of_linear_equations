@@ -13,30 +13,30 @@ int main()
 	int i, j, number_iter = 0; //counters
 	int r_a, r_ab; //ranks of the coefficient and the augmented matrices
 	double **c = NULL, *d = NULL; //the coefficient matrix and the column vector of constants of the equivalent system
-    double *x0 = NULL, *x1 = NULL; //the variable matrices
-    double e = 1, delta; //accuracy and calculation error
-    double norm_c; //m-norm of the matrix c
+    	double *x0 = NULL, *x1 = NULL; //the variable matrices
+    	double e = 1, delta; //accuracy and calculation error
+    	double norm_c; //m-norm of the matrix c
 	//read the augmented matrix from the input file
 	ab = input("input.txt", &n);
-    printf("ITERATION METHOD for solving system of linear equations\n");
-    for (i = 0; i < n; i++)
+    	printf("ITERATION METHOD for solving system of linear equations\n");
+    	for (i = 0; i < n; i++)
 	{
 		for (j = 0; j < n - 1; j++)
 		{
 			printf("%.2lf*x%d + ", ab[i][j], j);
 		}
-        printf("%.2lf*x%d = %.2lf\n", ab[i][j], j, ab[i][j + 1]);
+        	printf("%.2lf*x%d = %.2lf\n", ab[i][j], j, ab[i][j + 1]);
 	}
 	//check if the given system is consistent and has a unique solution
 	if (!check(ab, n))
 	{
 		exit(3);
 	}
-    do
-    {
-        printf("enter desired accuracy - number of digits after the decimal point -> ");
-        scanf("%d", &e_out);
-    } while (e_out <= 0);
+    	do
+    	{
+        	printf("enter desired accuracy - number of digits after the decimal point -> ");
+        	scanf("%d", &e_out);
+    	} while (e_out <= 0);
 	//allocate memory for the arrays
 	c = (double**)malloc(n * sizeof(double*));
 	d = (double*)malloc(n * sizeof(double));
@@ -69,7 +69,7 @@ int main()
 	{
 		e /= 10;
 	}
-    //calculate accuracy for comparing with delta during the iteration process
+    	//calculate accuracy for comparing with delta during the iteration process
 	e = ((1 - norm_c) / norm_c) * e;
 	//define the initial approximation of x
 	for (i = 0; i < n; i++)
